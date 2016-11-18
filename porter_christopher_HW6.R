@@ -2,6 +2,10 @@
 #Math 510
 # Homework 6 ggplot
 
+#Overall Comments: Good Try! I have indicate the potential problem in the code and you have refer to. You can study the example
+#                   I have given you and once you correcte your own and those codes really work, I am glad to grade your assignment
+#                   second chance.
+
 #First load ggplot2 and set the df to the diamonds dataframe
 library(ggplot2)
 df = diamonds
@@ -21,6 +25,12 @@ ggplot(df, aes(carat,price, color)) +
   geom_point(stat="identity", aes(colour= factor(color))) + 
   ggtitle('Diamonds - Weight to Price by Color') +
   theme(plot.title = element_text(color = "Blue", size = 14))
+
+#Comments: I tried the code and it seems doesn't work for me. I think maybe the problem is on "aes(carat, price, color)".
+#          Basically speaking I think the ggplot is ploting with layers. You first set up one basic layer with the data of carat
+#          and price. So it is not reasonable to see 3 dimensions in basic layer. And I have one good format you may have a look
+ggplot(diamonds,aes(carat,price))+geom_point(aes(color=factor(color)))+labs(title="Diamonds-Weight to Price by Color",x='Weight',y='Price')
+
 
 #3.)
 #first I take the natural log, the default of the log function,
