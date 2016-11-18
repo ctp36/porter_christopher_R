@@ -1,3 +1,8 @@
+#Overall Comment: I can tell you benefit something from the assignment and this is what we are trying to get! You are really
+#making great progress although things are not so perfect currently. There are some problems that I have observed from the code
+#and you can refer to my comment.
+
+
 #1.) Print to the console all methods and attributes associates with a dataframe. 
 #   Write code to determine the number of columns in a dataframe
 
@@ -48,6 +53,9 @@ colNames <- attr(diamonds, 'names')
 #the console.
 for (name in colNames) print(name)
 
+#Comments: This way do work but I want to point out that you can actually do this with simple names(diamonds). But it is good to solve 
+  #a questions with what you already know.
+
 
 
 #4.) Write code to determine the type of each column (numeric, factor, logical, etc.). 
@@ -70,8 +78,8 @@ sapply(diamonds, typeof)
 # this way creates a labeled vector with the mean of each column and prints the omitted columns to the console.
 x <- na.omit(sapply(diamonds, mean))
 x
-
-
+#Comment: Maybe you have some misunderstanding about na.omit() function. na.omit returns the object with incomplete cases removed.
+#         so it will not filter out the numeric columns
 
 #6.)Write code that will loop through any dataframe and create a frequency table 
 # for every factor column. Label the output with the name of the column
@@ -103,8 +111,18 @@ for (col in diamonds){
   print(rowCount)  
   print(naPercent)
 }
-
-
+#Comments: You don't need to define so many variables like rowCount, naPercent...just use the expression directly this can
+#make you code clear. Define process variables is suitable for quite long loop or function. And one more thing even more
+#important is the design of the loop. If you want to loop through the columns you should have something like followings:
+  for (i in dim(diamonds)[2]){
+    rowCount = length(diamonds[,i])
+    naCount = sum(is.na(diamonds[,i]))
+    naPercent = naCount/rowCount
+    print(names(diamonds)[i])
+    print(naCount)
+    print(rowCount)
+    print(naPercent)
+    }
 
 #8.) Create an R function that can accept any dataframe as a parameter and returns a data
 # frame that contains each pair of column names in the first column in a single 
